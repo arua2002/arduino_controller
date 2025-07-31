@@ -52,8 +52,8 @@ void MyClass::updateMatrix() {
   }
 }
 
-void MyClass::fire() {
+/*void MyClass::fire() {
     for(int i = 0; i < 8; i++) {
       Array[7][i] = 1;
-    }
+    }*/
 }
