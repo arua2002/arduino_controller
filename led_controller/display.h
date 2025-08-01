@@ -1,7 +1,7 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
-
 #include <Arduino.h>
+
 extern const int dataPin1;
 extern const int clockPin1;
 extern const int latchPin1;

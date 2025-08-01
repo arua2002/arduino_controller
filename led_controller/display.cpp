@@ -1,5 +1,6 @@
 #include "display.h"
-
+#include "animation.h"
+Anim Animation;
 const int dataPin1 = 15; // DS первого регистра
 const int clockPin1 = 4; // SH_CP первого регистра
 const int latchPin1 = 2; // ST_CP первого регистра
@@ -51,9 +52,5 @@ void MyClass::updateMatrix() {
     row = 0; // Возвращаемся к первой строке
   }
 }
+Animation.fire();
 
-void MyClass::fire() {
-    for(int i = 0; i < 8; i++) {
-      Array[7][i] = 1;
-    }
-}

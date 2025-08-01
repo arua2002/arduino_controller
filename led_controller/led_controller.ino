@@ -92,9 +92,10 @@ void effects()
 {
   if(fireEffectActive) 
   {
-    matrix.fire();
+    matrix.fire(); // исправлено, вызов метода fire() объекта matrix
   }
 }
+
 // Задача для обновления матрицы на втором ядре
 void taskUpdateMatrix(void *pvParameters) {
   while (true) {
