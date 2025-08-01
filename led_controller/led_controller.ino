@@ -10,16 +10,19 @@ const char *password = "23969506"; // Пароль вашей Wi-Fi сети
 WebServer server(80);
 
 bool fireEffectActive = false; // Флаг для отслеживания состояния эффекта огня
-
+void clear()//очистка
+{
+  for (int r = 0; r < 8; r++) {
+    for (int c = 0; c < 8; c++) {
+      matrix.Array[r][c] = 0;
+    }
+  }
+}
 void handleClient() {
     // Проверяем, пришёл ли запрос на очистку массива
     if (server.hasArg("clear") && server.arg("clear") == "1") {
       // Очищаем весь массив, устанавливая все элементы в 0
-      for (int r = 0; r < 8; r++) {
-        for (int c = 0; c < 8; c++) {
-          matrix.Array[r][c] = 0;
-        }
-      }
+      clear();
       fireEffectActive = false; // Отключаем эффект огня
       server.send(200, "text/plain", "Массив очищен, все ячейки установлены в 0");
       return; // Завершаем обработку запроса
@@ -27,6 +30,7 @@ void handleClient() {
 
     // Обработка параметра fire для запуска эффекта огня
     if (server.hasArg("fire") && server.arg("fire") == "1") {
+      clear();
       fireEffectActive = true; // Активируем эффект огня
       server.send(200, "text/plain", "Эффект огня активирован");
       return; // Завершаем обработку запроса
