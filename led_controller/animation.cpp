@@ -1,33 +1,30 @@
 #include "animation.h"
+#include "display.h"
+extern MyClass matrix;
 Anim::Anim() {
     // тело конструктора
 }
-int num = 0;
-void MyClass::fire() {//костёр
+
+void Anim::fire() {//костёр
+  static int num = 0;
   num++;
   if (num == 200) {
-    num = 0; // сбрасываем счётчик
-    
-    // Поднимаем огоньки вверх
-    for (int i = 0; i < 7; i++) {        // строки 0..6
+    num = 0;
+
+    for (int i = 0; i < 7; i++) {
       for (int j = 0; j < 8; j++) {
-        Array[i][j] = Array[i + 1][j];  // поднимаем огонёк вверх
-        Array[i + 1][j] = 0;            // выключаем огонёк в строке ниже
+        Array[i][j] = Array[i + 1][j];
       }
     }
-    
-    // Генерируем новую нижнюю строку - основание огня
+
     for (int j = 0; j < 8; j++) {
-      Array[7][j] = 1;  // 40% шанс включения
+      Array[7][j] = 1;
     }
 
-    
-    // Потолок - верхняя строка 0 - очищаем
     for (int j = 0; j < 8; j++) {
       Array[0][j] = 0;
     }
-    
-    // Сужение на предпоследней строке 6
+
     for (int j = 1; j < 7; j++) {
       Array[6][j] = (random(0, 100) < 50) ? 1 : 0;
     }
@@ -36,14 +33,17 @@ void MyClass::fire() {//костёр
     Array[5][1] = 0;
     Array[5][2] = 0;
 
-    
-    // Строка 5 - с вероятностью 60% включаем огоньки, если выключены
     for (int j = 1; j < 7; j++) {
       if (Array[5][j] == 0) {
         if (random(0, 100) < 10) {
           Array[5][j] = 1;
         }
       }
+    }
+  }
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      matrix.Array[i][j] = Array[i][j];
     }
   }
 }

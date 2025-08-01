@@ -4,14 +4,12 @@
 #include "display.h"
 MyClass matrix;
 
-
 const char *ssid = "TP-Link_3FD4"; // Имя вашей Wi-Fi сети
 const char *password = "23969506"; // Пароль вашей Wi-Fi сети
 WebServer server(80);
 
 bool fireEffectActive = false; // Флаг для отслеживания состояния эффекта огня
-void clear()//очистка
-{
+void clear(){//очистка
   for (int r = 0; r < 8; r++) {
     for (int c = 0; c < 8; c++) {
       matrix.Array[r][c] = 0;
@@ -92,7 +90,7 @@ void effects()
 {
   if(fireEffectActive) 
   {
-    matrix.fire(); // исправлено, вызов метода fire() объекта matrix
+    matrix.animation(0); // исправлено, вызов метода fire() объекта matrix
   }
 }
 

@@ -12,12 +12,12 @@ extern const int latchPin2;
 
 class MyClass {
 public:
-
     MyClass();
-    int Array[8][8];
+    
     void shiftOutData(int dataPin, int clockPin, int latchPin, byte data);
     void updateMatrix();
-    void  fire();
+    void animation(int a);
+    int Array[8][8];  // добавляем массив сюда, чтобы был доступен
 };
 
 #endif
