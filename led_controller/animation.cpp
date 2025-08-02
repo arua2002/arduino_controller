@@ -1,8 +1,8 @@
 #include "animation.h"
 #include "display.h"
 extern MyClass matrix;
-Anim::Anim() {
-    // тело конструктора
+Anim::Anim() {// тело конструктора
+  for (int i = 0; i < 8; i++) for (int j = 0; j < 8; j++) Array[i][j] = 0;
 }
 
 void Anim::fire() {//костёр
