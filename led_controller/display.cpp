@@ -1,6 +1,6 @@
 #include "display.h"
 #include "animation.h"
-Anim animatrinic;
+Anim animatronic;
 const int dataPin1 = 15; // DS первого регистра
 const int clockPin1 = 4; // SH_CP первого регистра
 const int latchPin1 = 2; // ST_CP первого регистра
@@ -41,6 +41,6 @@ void MyClass::updateMatrix() {
     if (row >= 8) row = 0;
 }
 void MyClass::animation(int a) { 
-    if(a==0)animatrinic.fire();
+    if(a==0)animatronic.fire();
 }
 
