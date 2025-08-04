@@ -88,8 +88,7 @@ void handleClient() {
       server.send(400, "text/plain", "Отсутствуют необходимые параметры: row, column, value или clear=1");
     }
 }
-void effects()
-{
+void effects(){
   if(fireEffectActive) 
   {
     matrix.animation(eff); // исправлено, вызов метода fire() объекта matrix

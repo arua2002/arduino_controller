@@ -5,7 +5,7 @@ Anim::Anim() {// тело конструктора
   for (int i = 0; i < 8; i++) for (int j = 0; j < 8; j++) Array[i][j] = 0;
 }
 
-void Anim::fire() {//костёр
+void Anim::fire() {// костёр
 
     for (int i = 0; i < 7; i++) {
       for (int j = 0; j < 8; j++) {
