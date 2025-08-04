@@ -43,6 +43,33 @@ void Anim::fire() {//костёр
     }
   }
 }
-void Anim::rain(){//дождь
+void Anim::rain() { // дождь
+  // Сдвигаем все строки вниз, начиная с нижней
+  for (int row = 7; row > 0; row--) {
+    for (int col = 0; col < 8; col++) {
+      Array[row][col] = Array[row - 1][col];
+    }
+  }
 
+  // В верхней строке генерируем новые капли так, чтобы они не стояли рядом
+  for (int col = 0; col < 8; col++) {
+    // Проверяем соседей по горизонтали
+    bool leftNeighbor = (col > 0) && (Array[0][col - 1] == 1);
+    bool rightNeighbor = (col < 7) && (Array[0][col + 1] == 1);
+
+    if (!leftNeighbor && !rightNeighbor) {
+      Array[0][col] = (random(0, 100) < 20) ? 1 : 0;
+    } else {
+      // Если сосед есть, ставим 0
+      Array[0][col] = 0;
+    }
+  }
+
+  // Копируем в matrix.Array
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      matrix.Array[i][j] = Array[i][j];
+    }
+  }
 }
+
