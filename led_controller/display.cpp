@@ -45,8 +45,17 @@ void MyClass::animation(int a) {
     num++;
     if (num == 200) {
         num = 0;
-        if(a==0) animatronic.fire();
-        if(a==1) animatronic.rain();
+        switch (a) {
+            case 0:
+                animatronic.fire();
+                break;
+            case 1:
+                animatronic.rain();
+                break;
+            default:
+                break;
+        }
     }
 }
+
 
