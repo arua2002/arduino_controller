@@ -8,6 +8,7 @@ public:
     Anim();
     
     void fire();
+    void rain();
     int Array[8][8];
 };
 

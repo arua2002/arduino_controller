@@ -6,10 +6,6 @@ Anim::Anim() {// тело конструктора
 }
 
 void Anim::fire() {//костёр
-  static int num = 0;
-  num++;
-  if (num == 200) {
-    num = 0;
 
     for (int i = 0; i < 7; i++) {
       for (int j = 0; j < 8; j++) {
@@ -40,10 +36,13 @@ void Anim::fire() {//костёр
         }
       }
     }
-  }
+  
   for (int i = 0; i < 8; i++) {
     for (int j = 0; j < 8; j++) {
       matrix.Array[i][j] = Array[i][j];
     }
   }
+}
+void Anim::rain(){//дождь
+
 }

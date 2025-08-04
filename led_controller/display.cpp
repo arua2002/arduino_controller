@@ -41,6 +41,12 @@ void MyClass::updateMatrix() {
     if (row >= 8) row = 0;
 }
 void MyClass::animation(int a) { 
-    if(a==0)animatronic.fire();
+    static int num = 0;
+    num++;
+    if (num == 200) {
+        num = 0;
+        if(a==0) animatronic.fire();
+        if(a==1) animatronic.rain();
+    }
 }
 

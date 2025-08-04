@@ -7,7 +7,7 @@ MyClass matrix;
 const char *ssid = "TP-Link_3FD4"; // Имя вашей Wi-Fi сети
 const char *password = "23969506"; // Пароль вашей Wi-Fi сети
 WebServer server(80);
-
+int eff = 0;
 bool fireEffectActive = false; // Флаг для отслеживания состояния эффекта огня
 void clear(){//очистка
   for (int r = 0; r < 8; r++) {
@@ -27,8 +27,10 @@ void handleClient() {
     }
 
     // Обработка параметра fire для запуска эффекта огня
-    if (server.hasArg("fire") && server.arg("fire") == "1") {
+    if (server.hasArg("fire")) {
       clear();
+      String fireValueStr = server.arg("fire");  // Получаем значение параметра как строку
+      eff = fireValueStr.toInt();
       fireEffectActive = true; // Активируем эффект огня
       server.send(200, "text/plain", "Эффект огня активирован");
       return; // Завершаем обработку запроса
@@ -90,7 +92,7 @@ void effects()
 {
   if(fireEffectActive) 
   {
-    matrix.animation(0); // исправлено, вызов метода fire() объекта matrix
+    matrix.animation(eff); // исправлено, вызов метода fire() объекта matrix
   }
 }
 
